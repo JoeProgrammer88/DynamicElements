@@ -9,9 +9,24 @@ window.onload = function () {
     submitButton.addEventListener('click', (event) => {
         event.preventDefault();
         let p = getProduct();
-        console.log(p);
+        displayProduct(p);
     });
 };
+function displayProduct(prod) {
+    let displayDiv = document.querySelector("#productDisplay");
+    displayDiv.innerHTML +=
+        `
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
+            <div class="card" style="width: 18rem;">
+                <img src="https://placehold.co/250" class="card-img-top alt="Just a blank placeholder">
+                <div class="card-body">
+                    <h5 class="card-title">${prod.title}</h5>
+                    <p class="card-text">This product is sold at ${prod.price}</p>
+                </div>
+            </div>
+        </div>
+        `;
+}
 function getProduct() {
     const productTitleTextBox = document.querySelector("#productTitle");
     let title = productTitleTextBox.value;

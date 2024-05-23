@@ -21,12 +21,27 @@ window.onload = function () {
         // Prevent the default form submission action
         event.preventDefault();
 
-        // Get Product from the form
-        let p = getProduct();
+        let p:Product = getProduct();
         
-        // Display product
-        console.log(p);
+        displayProduct(p);
     });
+}
+
+function displayProduct(prod:Product){
+    // Get the product display div
+    let displayDiv = document.querySelector("#productDisplay") as HTMLDivElement;
+    displayDiv.innerHTML += 
+        `
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
+            <div class="card" style="width: 18rem;">
+                <img src="https://placehold.co/250" class="card-img-top alt="Just a blank placeholder">
+                <div class="card-body">
+                    <h5 class="card-title">${prod.title}</h5>
+                    <p class="card-text">This product is sold at ${prod.price}</p>
+                </div>
+            </div>
+        </div>
+        `;
 }
 
 function getProduct() {
